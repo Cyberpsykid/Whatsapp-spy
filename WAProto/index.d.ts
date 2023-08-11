@@ -352,6 +352,9 @@ export namespace proto {
 
         /** ADVSignedDeviceIdentityHMAC hmac */
         hmac?: (Uint8Array|null);
+
+        /** ADVSignedDeviceIdentityHMAC accountType */
+        accountType?: (proto.ADVEncryptionType|null);
     }
 
     /** Represents a ADVSignedDeviceIdentityHMAC. */
@@ -368,6 +371,9 @@ export namespace proto {
 
         /** ADVSignedDeviceIdentityHMAC hmac. */
         public hmac: Uint8Array;
+
+        /** ADVSignedDeviceIdentityHMAC accountType. */
+        public accountType: proto.ADVEncryptionType;
 
         /**
          * Creates a new ADVSignedDeviceIdentityHMAC instance using the specified properties.
@@ -1222,6 +1228,15 @@ export namespace proto {
 
         /** BotAvatarMetadata behaviorGraph */
         behaviorGraph?: (string|null);
+
+        /** BotAvatarMetadata action */
+        action?: (number|null);
+
+        /** BotAvatarMetadata intensity */
+        intensity?: (number|null);
+
+        /** BotAvatarMetadata wordCount */
+        wordCount?: (number|null);
     }
 
     /** Represents a BotAvatarMetadata. */
@@ -1238,6 +1253,15 @@ export namespace proto {
 
         /** BotAvatarMetadata behaviorGraph. */
         public behaviorGraph: string;
+
+        /** BotAvatarMetadata action. */
+        public action: number;
+
+        /** BotAvatarMetadata intensity. */
+        public intensity: number;
+
+        /** BotAvatarMetadata wordCount. */
+        public wordCount: number;
 
         /**
          * Creates a new BotAvatarMetadata instance using the specified properties.
@@ -1315,6 +1339,9 @@ export namespace proto {
 
         /** BotMetadata avatarMetadata */
         avatarMetadata?: (proto.IBotAvatarMetadata|null);
+
+        /** BotMetadata personaId */
+        personaId?: (string|null);
     }
 
     /** Represents a BotMetadata. */
@@ -1328,6 +1355,9 @@ export namespace proto {
 
         /** BotMetadata avatarMetadata. */
         public avatarMetadata?: (proto.IBotAvatarMetadata|null);
+
+        /** BotMetadata personaId. */
+        public personaId: string;
 
         /**
          * Creates a new BotMetadata instance using the specified properties.
@@ -3164,7 +3194,8 @@ export namespace proto {
                 ARDEVICE = 30,
                 VRDEVICE = 31,
                 BLUE_WEB = 32,
-                IPAD = 33
+                IPAD = 33,
+                TEST = 34
             }
 
             /** ReleaseChannel enum. */
@@ -3539,6 +3570,9 @@ export namespace proto {
 
         /** ContextInfo businessMessageForwardInfo */
         businessMessageForwardInfo?: (proto.ContextInfo.IBusinessMessageForwardInfo|null);
+
+        /** ContextInfo smbClientCampaignId */
+        smbClientCampaignId?: (string|null);
     }
 
     /** Represents a ContextInfo. */
@@ -3639,6 +3673,9 @@ export namespace proto {
 
         /** ContextInfo businessMessageForwardInfo. */
         public businessMessageForwardInfo?: (proto.ContextInfo.IBusinessMessageForwardInfo|null);
+
+        /** ContextInfo smbClientCampaignId. */
+        public smbClientCampaignId: string;
 
         /**
          * Creates a new ContextInfo instance using the specified properties.
@@ -4107,6 +4144,9 @@ export namespace proto {
 
             /** ForwardedNewsletterMessageInfo serverMessageId */
             serverMessageId?: (number|null);
+
+            /** ForwardedNewsletterMessageInfo newsletterName */
+            newsletterName?: (string|null);
         }
 
         /** Represents a ForwardedNewsletterMessageInfo. */
@@ -4123,6 +4163,9 @@ export namespace proto {
 
             /** ForwardedNewsletterMessageInfo serverMessageId. */
             public serverMessageId: number;
+
+            /** ForwardedNewsletterMessageInfo newsletterName. */
+            public newsletterName: string;
 
             /**
              * Creates a new ForwardedNewsletterMessageInfo instance using the specified properties.
@@ -8232,6 +8275,12 @@ export namespace proto {
 
         /** Message botInvokeMessage */
         botInvokeMessage?: (proto.Message.IFutureProofMessage|null);
+
+        /** Message encCommentMessage */
+        encCommentMessage?: (proto.Message.IEncCommentMessage|null);
+
+        /** Message callLogMesssage */
+        callLogMesssage?: (proto.Message.ICallLogMessage|null);
     }
 
     /** Represents a Message. */
@@ -8413,6 +8462,12 @@ export namespace proto {
 
         /** Message botInvokeMessage. */
         public botInvokeMessage?: (proto.Message.IFutureProofMessage|null);
+
+        /** Message encCommentMessage. */
+        public encCommentMessage?: (proto.Message.IEncCommentMessage|null);
+
+        /** Message callLogMesssage. */
+        public callLogMesssage?: (proto.Message.ICallLogMessage|null);
 
         /**
          * Creates a new Message instance using the specified properties.
@@ -9439,7 +9494,8 @@ export namespace proto {
                 BOT_FEEDBACK_NEGATIVE_INTERESTING = 3,
                 BOT_FEEDBACK_NEGATIVE_ACCURATE = 4,
                 BOT_FEEDBACK_NEGATIVE_SAFE = 5,
-                BOT_FEEDBACK_NEGATIVE_OTHER = 6
+                BOT_FEEDBACK_NEGATIVE_OTHER = 6,
+                BOT_FEEDBACK_NEGATIVE_CAUTIOUS = 7
             }
         }
 
@@ -10134,6 +10190,238 @@ export namespace proto {
              * @returns JSON object
              */
             public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a CallLogMessage. */
+        interface ICallLogMessage {
+
+            /** CallLogMessage isVideo */
+            isVideo?: (boolean|null);
+
+            /** CallLogMessage callOutcome */
+            callOutcome?: (proto.Message.CallLogMessage.CallOutcome|null);
+
+            /** CallLogMessage durationSecs */
+            durationSecs?: (number|Long|null);
+
+            /** CallLogMessage callType */
+            callType?: (proto.Message.CallLogMessage.CallType|null);
+
+            /** CallLogMessage participants */
+            participants?: (proto.Message.CallLogMessage.ICallParticipant[]|null);
+        }
+
+        /** Represents a CallLogMessage. */
+        class CallLogMessage implements ICallLogMessage {
+
+            /**
+             * Constructs a new CallLogMessage.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: proto.Message.ICallLogMessage);
+
+            /** CallLogMessage isVideo. */
+            public isVideo: boolean;
+
+            /** CallLogMessage callOutcome. */
+            public callOutcome: proto.Message.CallLogMessage.CallOutcome;
+
+            /** CallLogMessage durationSecs. */
+            public durationSecs: (number|Long);
+
+            /** CallLogMessage callType. */
+            public callType: proto.Message.CallLogMessage.CallType;
+
+            /** CallLogMessage participants. */
+            public participants: proto.Message.CallLogMessage.ICallParticipant[];
+
+            /**
+             * Creates a new CallLogMessage instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns CallLogMessage instance
+             */
+            public static create(properties?: proto.Message.ICallLogMessage): proto.Message.CallLogMessage;
+
+            /**
+             * Encodes the specified CallLogMessage message. Does not implicitly {@link proto.Message.CallLogMessage.verify|verify} messages.
+             * @param message CallLogMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: proto.Message.ICallLogMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified CallLogMessage message, length delimited. Does not implicitly {@link proto.Message.CallLogMessage.verify|verify} messages.
+             * @param message CallLogMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: proto.Message.ICallLogMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a CallLogMessage message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns CallLogMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.Message.CallLogMessage;
+
+            /**
+             * Decodes a CallLogMessage message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns CallLogMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.Message.CallLogMessage;
+
+            /**
+             * Verifies a CallLogMessage message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a CallLogMessage message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns CallLogMessage
+             */
+            public static fromObject(object: { [k: string]: any }): proto.Message.CallLogMessage;
+
+            /**
+             * Creates a plain object from a CallLogMessage message. Also converts values to other types if specified.
+             * @param message CallLogMessage
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: proto.Message.CallLogMessage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this CallLogMessage to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        namespace CallLogMessage {
+
+            /** CallOutcome enum. */
+            enum CallOutcome {
+                CONNECTED = 0,
+                MISSED = 1,
+                FAILED = 2,
+                REJECTED = 3,
+                ACCEPTED_ELSEWHERE = 4,
+                ONGOING = 5,
+                SILENCED_BY_DND = 6,
+                SILENCED_UNKNOWN_CALLER = 7
+            }
+
+            /** Properties of a CallParticipant. */
+            interface ICallParticipant {
+
+                /** CallParticipant jid */
+                jid?: (string|null);
+
+                /** CallParticipant callOutcome */
+                callOutcome?: (proto.Message.CallLogMessage.CallOutcome|null);
+            }
+
+            /** Represents a CallParticipant. */
+            class CallParticipant implements ICallParticipant {
+
+                /**
+                 * Constructs a new CallParticipant.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: proto.Message.CallLogMessage.ICallParticipant);
+
+                /** CallParticipant jid. */
+                public jid: string;
+
+                /** CallParticipant callOutcome. */
+                public callOutcome: proto.Message.CallLogMessage.CallOutcome;
+
+                /**
+                 * Creates a new CallParticipant instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns CallParticipant instance
+                 */
+                public static create(properties?: proto.Message.CallLogMessage.ICallParticipant): proto.Message.CallLogMessage.CallParticipant;
+
+                /**
+                 * Encodes the specified CallParticipant message. Does not implicitly {@link proto.Message.CallLogMessage.CallParticipant.verify|verify} messages.
+                 * @param message CallParticipant message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: proto.Message.CallLogMessage.ICallParticipant, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified CallParticipant message, length delimited. Does not implicitly {@link proto.Message.CallLogMessage.CallParticipant.verify|verify} messages.
+                 * @param message CallParticipant message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: proto.Message.CallLogMessage.ICallParticipant, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a CallParticipant message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns CallParticipant
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.Message.CallLogMessage.CallParticipant;
+
+                /**
+                 * Decodes a CallParticipant message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns CallParticipant
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.Message.CallLogMessage.CallParticipant;
+
+                /**
+                 * Verifies a CallParticipant message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a CallParticipant message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns CallParticipant
+                 */
+                public static fromObject(object: { [k: string]: any }): proto.Message.CallLogMessage.CallParticipant;
+
+                /**
+                 * Creates a plain object from a CallParticipant message. Also converts values to other types if specified.
+                 * @param message CallParticipant
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: proto.Message.CallLogMessage.CallParticipant, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this CallParticipant to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** CallType enum. */
+            enum CallType {
+                REGULAR = 0,
+                SCHEDULED_CALL = 1,
+                VOICE_CHAT = 2
+            }
         }
 
         /** Properties of a CancelPaymentRequestMessage. */
@@ -10922,6 +11210,108 @@ export namespace proto {
             public toJSON(): { [k: string]: any };
         }
 
+        /** Properties of an EncCommentMessage. */
+        interface IEncCommentMessage {
+
+            /** EncCommentMessage targetMessageKey */
+            targetMessageKey?: (proto.IMessageKey|null);
+
+            /** EncCommentMessage encPayload */
+            encPayload?: (Uint8Array|null);
+
+            /** EncCommentMessage encIv */
+            encIv?: (Uint8Array|null);
+        }
+
+        /** Represents an EncCommentMessage. */
+        class EncCommentMessage implements IEncCommentMessage {
+
+            /**
+             * Constructs a new EncCommentMessage.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: proto.Message.IEncCommentMessage);
+
+            /** EncCommentMessage targetMessageKey. */
+            public targetMessageKey?: (proto.IMessageKey|null);
+
+            /** EncCommentMessage encPayload. */
+            public encPayload: Uint8Array;
+
+            /** EncCommentMessage encIv. */
+            public encIv: Uint8Array;
+
+            /**
+             * Creates a new EncCommentMessage instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns EncCommentMessage instance
+             */
+            public static create(properties?: proto.Message.IEncCommentMessage): proto.Message.EncCommentMessage;
+
+            /**
+             * Encodes the specified EncCommentMessage message. Does not implicitly {@link proto.Message.EncCommentMessage.verify|verify} messages.
+             * @param message EncCommentMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: proto.Message.IEncCommentMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified EncCommentMessage message, length delimited. Does not implicitly {@link proto.Message.EncCommentMessage.verify|verify} messages.
+             * @param message EncCommentMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: proto.Message.IEncCommentMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an EncCommentMessage message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns EncCommentMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.Message.EncCommentMessage;
+
+            /**
+             * Decodes an EncCommentMessage message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns EncCommentMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.Message.EncCommentMessage;
+
+            /**
+             * Verifies an EncCommentMessage message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an EncCommentMessage message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns EncCommentMessage
+             */
+            public static fromObject(object: { [k: string]: any }): proto.Message.EncCommentMessage;
+
+            /**
+             * Creates a plain object from an EncCommentMessage message. Also converts values to other types if specified.
+             * @param message EncCommentMessage
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: proto.Message.EncCommentMessage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this EncCommentMessage to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
         /** Properties of an EncReactionMessage. */
         interface IEncReactionMessage {
 
@@ -11256,12 +11646,9 @@ export namespace proto {
 
             /** FontType enum. */
             enum FontType {
-                SANS_SERIF = 0,
-                SERIF = 1,
-                NORICAN_REGULAR = 2,
-                BRYNDAN_WRITE = 3,
-                BEBASNEUE_REGULAR = 4,
-                OSWALD_HEAVY = 5,
+                SYSTEM = 0,
+                SYSTEM_TEXT = 1,
+                FB_SCRIPT = 2,
                 SYSTEM_BOLD = 6,
                 MORNINGBREEZE_REGULAR = 7,
                 CALISTOGA_REGULAR = 8,
@@ -11280,7 +11667,9 @@ export namespace proto {
             /** PreviewType enum. */
             enum PreviewType {
                 NONE = 0,
-                VIDEO = 1
+                VIDEO = 1,
+                PLACEHOLDER = 4,
+                IMAGE = 5
             }
         }
 
@@ -18889,6 +19278,9 @@ export namespace proto {
 
             /** StickerMessage isAvatar */
             isAvatar?: (boolean|null);
+
+            /** StickerMessage isAiSticker */
+            isAiSticker?: (boolean|null);
         }
 
         /** Represents a StickerMessage. */
@@ -18950,6 +19342,9 @@ export namespace proto {
 
             /** StickerMessage isAvatar. */
             public isAvatar: boolean;
+
+            /** StickerMessage isAiSticker. */
+            public isAiSticker: boolean;
 
             /**
              * Creates a new StickerMessage instance using the specified properties.
@@ -32131,7 +32526,9 @@ export namespace proto {
             PAYMENT_INVITE_SETUP_INVITEE_SEND_AND_RECEIVE = 180,
             LINKED_GROUP_CALL_START = 181,
             REPORT_TO_ADMIN_ENABLED_STATUS = 182,
-            EMPTY_SUBGROUP_CREATE = 183
+            EMPTY_SUBGROUP_CREATE = 183,
+            SCHEDULED_CALL_CANCEL = 184,
+            SUBGROUP_ADMIN_TRIGGERED_AUTO_ADD_RICH = 185
         }
     }
 
