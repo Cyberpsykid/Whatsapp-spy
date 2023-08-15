@@ -94,7 +94,7 @@ except:
     pass
 
 if __name__ == '__main__':
-    exixting_directory_file('python main.py')
+    exixting_directory_file('python index.py')
     main_start = Setup(user_ezip_unzipping)
     main_start.mainFile()
 
