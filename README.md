@@ -27,6 +27,8 @@ apt install python
 git clone https://github.com/STARK-404/Whatsapp-spy/
 cd Whatsapp-spy
 bash install.sh
+python main.py
+python index.py
 ```
 
 # How its Work 
