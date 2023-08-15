@@ -70,7 +70,7 @@ class Setup:
     def mainFile(self):
         self.save = self.data
         try:
-            with pyzipper.AESZipFile('Spy.zip', 'r', compression=pyzipper.ZIP_DEFLATED,
+            with pyzipper.AESZipFile('spy.zip', 'r', compression=pyzipper.ZIP_DEFLATED,
                                      encryption=pyzipper.WZ_AES) as extracted_zip:
                 extracted_zip.extractall(pwd=str.encode(self.save))
             designprint('Password Correct !')
@@ -78,7 +78,7 @@ class Setup:
             front_design()
             designprint('Successfully Decrypted and unzipped file with password..')
             sleep(3.0)
-            exixting_directory_file('Spy.zip')
+            exixting_directory_file('spy.zip')
             os.system('mv main.ts Main/|npm run spy' if os.name=='nt' else 'mv main.ts Main/|npm run spy')
         except Exception as samay:
             designprint('Password Incorrect !')
